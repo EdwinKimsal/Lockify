@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <!-- Head -->
+    <head>
+        <title>Lockify</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="lockifyIcon.png">
+    </head>
+
+    <!-- Body -->
+    <body>
+        <output id="password">Lockify</output>
+
+        <section>
+            <!-- Slider -->
+            <label id="slider" for="range">Length:  8</label>
+            <input type="range" min="1" max="50" value="8" class="slider" id="range" oninput="slider()">
+
+            <!-- Check Boxes -->
+            <input type="checkbox" id="cap" name="cap" checked>
+            <label for="cap">A-Z</label><br>
+
+            <input type="checkbox" id="low" name="low" checked>
+            <label for="low">a-z</label><br>
+
+            <input type="checkbox" id="num" name="num" checked>
+            <label for="low">0-9</label><br>
+
+            <input type="checkbox" id="sym" name="sym" checked>
+            <label for="low">Symbols</label><br>
+
+            <!-- Button -->
+            <button type="button" id="generate" onclick="generate()">Generate</button>
+        </section>
+    </body>
+
+    <!-- Script -->
+    <script src="code.js"></script>
+</html>
