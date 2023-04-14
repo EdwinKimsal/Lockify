@@ -39,6 +39,14 @@ function generate(){
         choices = choices.concat(symArr);
     }
 
+    /* Randomize array in-place using Durstenfeld shuffle algorithm */
+    for (var i = choices.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = choices[i];
+        choices[i] = choices[j];
+        choices[j] = temp;
+    }
+
     // Randomize Password
     for (var i = 0; i < range.value; i++){
         var j = Math.floor(Math.random() * choices.length);
