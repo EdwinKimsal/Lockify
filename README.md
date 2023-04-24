@@ -1,4 +1,4 @@
 # Lockify
-A website that generates random secure passwords.
+A website that generates secure passwords.
 
 Website: https://lockify.netlify.app/
