@@ -9,9 +9,13 @@
 
     <!-- Body -->
     <body>
-        <output id="password">Lockify</output>
+        <!-- Password Box -->
+        <header id="header">
+            <output id="password">Lockify</output>
+        </header>
 
-        <section>
+        <!-- Customizable Content -->
+        <section id="content">
             <!-- Slider -->
             <label id="slider" for="range">Length:  8</label>
             <input type="range" min="1" max="50" value="8" class="slider" id="range" oninput="slider()">
@@ -24,15 +28,26 @@
             <label for="low">a-z</label><br>
 
             <input type="checkbox" id="num" name="num" checked>
-            <label for="low">0-9</label><br>
+            <label for="num">0-9</label><br>
 
             <input type="checkbox" id="sym" name="sym" checked>
-            <label for="low">Symbols</label><br>
+            <label for="sym">Symbols</label><br>
 
-            <!-- Button -->
-            <button type="button" id="generate" onclick="generate()">Generate</button>
+            <input type="checkbox" id="hide" name="hide" onchange="hideCheck()">
+            <label for="hide">Hide Password</label><br>
+
+            <label for="inc">Include:</label>
+            <input type="text" id="inc" name="inc" placeholder='Seperate Each Element With A Space'><br>
+
+            <label for="exc">Exclude:</label>
+            <input type="text" id="exc" name="exv" placeholder='Seperate Each Element With A Space'><br><br>
+
+            <!-- Buttons -->
+            <section id="buttons">
+                <button type="button" id="generate" onclick="generate()">Generate</button>
+                <button type="button" id="copy" onclick="copy()">Copy</button>
+            </section>
         </section>
-    </body>
 
     <!-- Script -->
     <script src="code.js"></script>
