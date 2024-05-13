@@ -1,5 +1,6 @@
 // Variables
 const pas = document.getElementById('password');
+const pasVal = getComputedStyle(pas);
 const range = document.getElementById('range');
 const cap = document.getElementById('cap');
 const low = document.getElementById('low');
@@ -8,22 +9,87 @@ const sym = document.getElementById('sym');
 const hide = document.getElementById('hide');
 const inc = document.getElementById("inc");
 const exc = document.getElementById("exc");
+var matchArr = [];
 
 const capArr = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 const lowArr = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 const numArr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-const symArr = ['!', '@', '#', '$', '%', '^', '*', '-', '_', '+']
+const symArr = ['!', '"', '#', '$', '%', '&', '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', ']', '^', '_', '`', '{', '|', '}', '~']
 var choices = [];
 var pasArr = [];
 var include = [];
 var exclude = [];
 
+// // Resize Text
+// function resize(){
+//     // Select all letters w/ variable 'elements'
+//     var elements = document.querySelectorAll('span');
 
-// Slider Update
-function slider(){
-    document.getElementById('slider').innerHTML = 'Length: ' + document.getElementById('range').value;
+//     // If the output's height is greater than the outpur's line height...
+//     while (parseFloat(pasVal.height) > parseFloat(pasVal.lineHeight)){
+//         // Change the fontSize of each letter...
+//         elements.forEach(element => {
+//             console.log(parseFloat(element.style.fontSize))
+//             element.style.fontSize = parseFloat(element.style.fontSize) - .62 + 'rem';
+//             console.log(parseFloat(element.style.fontSize))
+//           });
+//     }
+// }
+
+// Change Text Color
+function colorChange(){
+    var char = pas.className.split("");
+    var colors = ["#8FCAFF", "#FC8FFF", "#FFC48F", "#92FF8F", "white", "#FF7276"];
+    var spans = [];
+
+    for(var i = 0; i < char.length; i++){
+        // Check for Cap
+        if(capArr.includes(char[i]) == true){
+            var color = colors[0]
+            var span = "<span style='color: " + color + "; font-size: 1rem" + ";'>" + char[i] + "</span>"
+        }
+
+        // Check for Low
+        else if(lowArr.includes(char[i]) == true){
+            var color = colors[1]
+            var span = "<span style='color: " + color + "; font-size: 1rem" + ";'>" + char[i] + "</span>"
+        }
+
+        // Check for Num
+        else if(numArr.includes(char[i]) == true){
+            var color = colors[2]
+            var span = "<span style='color: " + color + "; font-size: 1rem" + ";'>" + char[i] + "</span>"
+        }
+
+        // Check for Sym
+        else if(symArr.includes(char[i]) == true){
+            var color = colors[3]
+            var span = "<span style='color: " + color + "; font-size: 1rem" + ";'>" + char[i] + "</span>"
+        }
+
+        // Check for others
+        else{
+            var color = colors[4]
+            var span = "<span style='color: " + color + "; font-size: 1rem" + ";'>" + char[i] + "</span>"
+        }
+
+        // Check for Hidden Box
+        if (hide.checked == true){
+            var color = colors[5]
+            var span = "<span style='color: " + color + "; font-size: 1rem" + ";'> * </span>"
+        }
+
+
+        // Push Results
+        spans.push(span);
+    }
+
+    // Setting Colored Spans As A Paragraph
+    pas.innerHTML = spans.join(" ");
+
+    // // Call the Resize Function
+    // resize();
 }
-
 
 // Generate Button Press
 function generate(){
@@ -45,11 +111,11 @@ function generate(){
     }
 
     // Add to the Include and Exclude Arrays
-    include = inc.value.split(", ");
-    exclude = exc.value.split(", ");
+    // include = inc.value.split(" =+= ");
+    exclude = exc.value.split(" =+= ");
 
     // Add Include Array Into Choices Array
-    choices = choices.concat(include);
+    // choices = choices.concat(include);
 
     // Remove Each Include Element Into Array
     for (var i = 0; i < exclude.length; i++){
@@ -61,7 +127,7 @@ function generate(){
         }
     }
 
-    // Randomize array in-place using Durstenfeld Shuffle Algorithm */
+    // Randomize array in-place using Durstenfeld Shuffle Algorithm
     for (var i = choices.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));
         var temp = choices[i];
@@ -76,29 +142,36 @@ function generate(){
         var pasStr = pasArr.join("");
     }
 
-
     // Show Password
     pas.innerHTML = pasStr;
+
+    // Save Password
+    pas.className = pasStr;
+
+    // Change Color
+    colorChange()
 
     // Reset
     choices = []
     pasArr = []
 }
 
-function hideCheck(){
-    if(hide.checked === true){
-        pas.style.color = "black"
-    }
+// Slider Update
+function slider(){
+    // Changing Length Value
+    document.getElementById('slider').innerHTML = 'Length: ' + document.getElementById('range').value;
 
-    else{
-        pas.style.color = "white"
-    }
+    // Generate
+    generate()
+
+    // Font Size
 }
 
+// Copy Password To Clipboard
 function copy(){
     // Setting text variable
-    text = pas.value
+    text = pas.className
 
-    /* Copy the text inside the text field */
+    // Copy the text inside the text field
     navigator.clipboard.writeText(text)
 }

@@ -8,39 +8,39 @@
     </head>
 
     <!-- Body -->
-    <body>
+    <body onload="colorChange()">
         <!-- Password Box -->
         <header id="header">
-            <output id="password">Lockify</output>
+            <output id="password" class="Lockify">Lockify</output>
         </header>
 
         <!-- Customizable Content -->
         <section id="content">
             <!-- Slider -->
-            <label id="slider" for="range">Length:  8</label>
-            <input type="range" min="1" max="50" value="8" class="slider" id="range" oninput="slider()">
+            <label id="slider" for="range">Length:  7</label>
+            <input type="range" min="5" max="75" value="7" class="slider" id="range" oninput="slider()">
 
             <!-- Check Boxes -->
-            <input type="checkbox" id="cap" name="cap" checked>
+            <input type="checkbox" id="cap" name="cap" checked onclick="generate()">
             <label for="cap">A-Z</label><br>
 
-            <input type="checkbox" id="low" name="low" checked>
+            <input type="checkbox" id="low" name="low" checked onclick="generate()">
             <label for="low">a-z</label><br>
 
-            <input type="checkbox" id="num" name="num" checked>
+            <input type="checkbox" id="num" name="num" checked onclick="generate()">
             <label for="num">0-9</label><br>
 
-            <input type="checkbox" id="sym" name="sym" checked>
-            <label for="sym">Symbols</label><br>
+            <input type="checkbox" id="sym" name="sym" checked onclick="generate()">
+            <label for="sym">Symbols (!"#$%&()*+,-./:;<=>?@[]^_`{|}~)</label><br>
 
-            <input type="checkbox" id="hide" name="hide" onchange="hideCheck()">
+            <input type="checkbox" id="hide" name="hide" onchange="colorChange()">
             <label for="hide">Hide Password</label><br>
 
-            <label for="inc">Include:</label>
-            <input type="text" id="inc" name="inc" placeholder='Seperate Each Element With A Space'><br>
+            <!-- <label for="inc">Include:</label>
+            <input type="text" id="inc" name="inc" placeholder='text1 =+= text2 =+= text3...'><br> -->
 
             <label for="exc">Exclude:</label>
-            <input type="text" id="exc" name="exv" placeholder='Seperate Each Element With A Space'><br><br>
+            <input type="text" id="exc" name="exv" placeholder='text1 =+= text2 =+= text3...'><br><br>
 
             <!-- Buttons -->
             <section id="buttons">

@@ -12,21 +12,39 @@
     font-weight: normal;
 }
 
+/* Body Styling */
+body{
+    background-color: #696969;
+    color: white;
+}
+
 /* Password */
 #password{
     position: absolute;
     margin: 0px;
+    padding-left: 3em;
+    padding-right: 3em;
+    box-sizing: border-box;
     top: 0px;
     right: 0px;
+    font-size: .75em;
     line-height: 3.5rem;
-    height: 3.5rem;
+    height: fit-content;
     width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-weight: bold;
 	align-items: center;
     text-align: center;
     display: inline-block;
-    background-color: black;
+    background-color: #000000;
     color: white;
+}
+
+/* Span Styling */
+span{
+    font-size: 1rem;
 }
 
 /* Content Shifted Down */
@@ -59,9 +77,60 @@ input[type="checkbox"]:hover{
     cursor: pointer;
 }
 
+/* Different Color Checkboxes and Labels */
+#cap{
+    accent-color: #0057A5;
+}
+
+label[for="cap"]{
+    color: #8FCAFF;
+}
+
+#low{
+    accent-color: #A000A5;
+}
+
+label[for="low"]{
+    color: #FC8FFF;
+}
+
+#num{
+    accent-color: #D86600;
+}
+
+label[for="num"]{
+    color: #FFC48F;
+}
+
+#sym{
+    accent-color: #04A500;
+}
+
+label[for="sym"]{
+    color: #92FF8F;
+}
+
+#hide{
+    accent-color: #C00005;
+}
+
+label[for="hide"]{
+    color: #FF7276;
+}
+
 /* Text Box */
 input[type="text"]{
     width: 60%;
+    background-color: #696969;
+    color: white;
+    border-color: white;
+    border-style: solid;
+    padding-left: .4rem;
+    padding-right: .4rem;
+}
+
+input[type="text"]::placeholder{
+    color: #f4f4f4;
 }
 
 /* Buttons */
@@ -72,14 +141,23 @@ input[type="text"]{
 }
 
 button[type="button"]{
-    background-color: black;
+    background-color: #353535;
     color: white;
     border: none;
-    margin-left: 2rem;
-    margin-right: 2rem;
+    margin-left: .5rem;
+    margin-right: .5rem;
     padding: .2em; 
 }
 
 button[type="button"]:hover{
     cursor: pointer;
+}
+
+/* Span Styling */
+span{
+    width: fit-content;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    float: center;
 }
