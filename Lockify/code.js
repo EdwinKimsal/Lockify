@@ -1,4 +1,4 @@
-// Variables
+// HTML ID Variables
 const pas = document.getElementById('password');
 const pasVal = getComputedStyle(pas);
 const range = document.getElementById('range');
@@ -7,34 +7,21 @@ const low = document.getElementById('low');
 const num = document.getElementById('num');
 const sym = document.getElementById('sym');
 const hide = document.getElementById('hide');
+const sim = document.getElementById('sim');
 const inc = document.getElementById("inc");
 const exc = document.getElementById("exc");
-var matchArr = [];
 
+// Array Variables
+var matchArr = [];
 const capArr = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 const lowArr = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 const numArr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 const symArr = ['!', '"', '#', '$', '%', '&', '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', ']', '^', '_', '`', '{', '|', '}', '~']
 var choices = [];
 var pasArr = [];
+var simChar = ['I', 'i', 'l', 'L', '1', '|', '0', 'o', 'O'];
 var include = [];
 var exclude = [];
-
-// // Resize Text
-// function resize(){
-//     // Select all letters w/ variable 'elements'
-//     var elements = document.querySelectorAll('span');
-
-//     // If the output's height is greater than the outpur's line height...
-//     while (parseFloat(pasVal.height) > parseFloat(pasVal.lineHeight)){
-//         // Change the fontSize of each letter...
-//         elements.forEach(element => {
-//             console.log(parseFloat(element.style.fontSize))
-//             element.style.fontSize = parseFloat(element.style.fontSize) - .62 + 'rem';
-//             console.log(parseFloat(element.style.fontSize))
-//           });
-//     }
-// }
 
 // Change Text Color
 function colorChange(){
@@ -86,9 +73,6 @@ function colorChange(){
 
     // Setting Colored Spans As A Paragraph
     pas.innerHTML = spans.join(" ");
-
-    // // Call the Resize Function
-    // resize();
 }
 
 // Generate Button Press
@@ -110,12 +94,21 @@ function generate(){
         choices = choices.concat(symArr);
     }
 
-    // Add to the Include and Exclude Arrays
-    // include = inc.value.split(" =+= ");
+    if (sim.checked === true){
+        for(var i = 0; i < simChar.length; i++){
+            if (choices.includes(simChar[i]) === true){
+                var index = choices.indexOf(simChar[i]);
+                choices.splice(index, 1)
+            }
+        }
+    }
+
+    // Add to the Include and Exclude Arrays by splitting elements by ' =+= '
+    include = inc.value.split(" =+= ");
     exclude = exc.value.split(" =+= ");
 
     // Add Include Array Into Choices Array
-    // choices = choices.concat(include);
+    choices = choices.concat(include);
 
     // Remove Each Include Element Into Array
     for (var i = 0; i < exclude.length; i++){
@@ -163,8 +156,6 @@ function slider(){
 
     // Generate
     generate()
-
-    // Font Size
 }
 
 // Copy Password To Clipboard

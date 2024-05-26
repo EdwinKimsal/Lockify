@@ -17,28 +17,38 @@
         <!-- Customizable Content -->
         <section id="content">
             <!-- Slider -->
-            <label id="slider" for="range">Length:  7</label>
-            <input type="range" min="5" max="75" value="7" class="slider" id="range" oninput="slider()">
+            <label id="slider" for="range">Length: 10</label>
+            <input type="range" min="5" max="75" value="10" class="slider" id="range" oninput="slider()">
 
-            <!-- Check Boxes -->
+            <!-- Check Box Capital Letters -->
             <input type="checkbox" id="cap" name="cap" checked onclick="generate()">
             <label for="cap">A-Z</label><br>
 
+            <!-- Check Box Lowercase Letters -->
             <input type="checkbox" id="low" name="low" checked onclick="generate()">
             <label for="low">a-z</label><br>
 
+            <!-- Check Box Numbers -->
             <input type="checkbox" id="num" name="num" checked onclick="generate()">
             <label for="num">0-9</label><br>
 
+            <!-- Check Box Symbols -->
             <input type="checkbox" id="sym" name="sym" checked onclick="generate()">
             <label for="sym">Symbols (!"#$%&()*+,-./:;<=>?@[]^_`{|}~)</label><br>
 
+            <!-- Check Box Hide -->
             <input type="checkbox" id="hide" name="hide" onchange="colorChange()">
             <label for="hide">Hide Password</label><br>
 
-            <!-- <label for="inc">Include:</label>
-            <input type="text" id="inc" name="inc" placeholder='text1 =+= text2 =+= text3...'><br> -->
+            <!-- Check Box Exclude Similar Characters -->
+            <input type="checkbox" id="sim" name="sim" checked onchange="generate()">
+            <label for="sim">Exclude Similar Characters (IilL1|0oO)</label><br> 
 
+            <!-- Text Box Include -->
+            <label for="inc">Include:</label>
+            <input type="text" id="inc" name="inc" placeholder='text1 =+= text2 =+= text3...'><br>
+
+            <!-- Text Box Exclude -->
             <label for="exc">Exclude:</label>
             <input type="text" id="exc" name="exv" placeholder='text1 =+= text2 =+= text3...'><br><br>
 
